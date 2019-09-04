@@ -1,2 +1,3 @@
 	name: Ankur Singh, Machine Leanring Engineer
 	markdown: kramdown
+	permalink: /blog/:year/:month/:day/:title
