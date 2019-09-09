@@ -108,7 +108,7 @@ analytics:
 # Site Author
 author:
   name             : "Ankur Singh"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "assets/images/ankur.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "A ML/DL practitioner. Interested in CV, NLP & Recommender Systems. "
   location         : "Pune, Maharashtra"
   email            :
