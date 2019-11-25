@@ -1,15 +1,12 @@
-*.gem
-*.sublime-project
-*.sublime-workspace
-.bundle
-.DS_Store
-.jekyll-cache
+# Local Site Directories
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-.sass-cache
-_asset_bundler_cache
-_site
-codekit-config.json
-example/_site
+
+# To generate Gemfile.lock -> use: $ bundle install
+# If unknown encoding name CP720 Error occured -> use: $ chcp.com 1252
 Gemfile.lock
-node_modules
-npm-debug.log*
+
+# Photoshop Documents
+Preview.psd

@@ -1,0 +1,19 @@
+- name: HTML5/CSS3
+  percentage: 90
+  color: danger
+
+- name: Python
+  percentage: 70
+  color: dark
+
+- name: JavaScript
+  percentage: 60
+  color: 
+
+- name: Git
+  percentage: 70
+  color: info
+
+- name: ML / DL
+  percentage: 70
+  color: success
