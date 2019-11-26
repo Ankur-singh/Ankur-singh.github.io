@@ -1,19 +1,20 @@
-- name: HTML5/CSS3
+- name: Python
+  percentage: 90
+  color: dark
+
+- name: ML / DL Frameworks
+  percentage: 85
+  color: success
+
+- name: Data Science
   percentage: 90
   color: danger
 
-- name: Python
+- name: Full Stack Web Development
   percentage: 70
-  color: dark
-
-- name: JavaScript
-  percentage: 60
   color: 
 
 - name: Git
-  percentage: 70
+  percentage: 75
   color: info
 
-- name: ML / DL
-  percentage: 70
-  color: success

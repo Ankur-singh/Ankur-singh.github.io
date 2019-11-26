@@ -1,3 +1,6 @@
+## Org: https://youssefraafatnasry.github.io/portfolYOU/docs/
+## Docs: https://youssefraafatnasry.github.io/portfolYOU/docs/
+
 ### Site Settings ###
 title               : Ankur Singh 
 description         : >-                               # >- means to ignore newlines until "url:"
@@ -13,12 +16,12 @@ repository          : Ankur-singh.github.io    # repository metadata on GitHub P
 ### Author Info ###
 author:
   name              : Ankur Singh
-  image             : # https://bit.ly/2KCvgVJ
+  image             : assets/ankur.jpg # https://bit.ly/2KCvgVJ
   email             : as.ankursingh3.1@gmail.com
-  github            : your_username
-  twitter           : your_username
-  instagram         : your_username
-  linkedin          : your_username
+  github            : Ankur-singh
+  twitter           : I_ankursingh
+  instagram         : ankursingh_1234
+  linkedin          : ankur-singh-ml
 # medium            : your_username
 # behance           : your_username
 # dribbble          : your_username

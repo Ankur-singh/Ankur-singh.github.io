@@ -2,31 +2,26 @@
 # Get Colors from : https://brandcolors.net/
 
 email:
-  url   : "mailto:"
+  url   : "mailto:as.ankursingh3.1@gmail.com"
   icon  : fas fa-envelope
   color : db4437
 
-facebook:
-  url   : https://www.facebook.com/
-  icon  : fab fa-facebook
+instagram:
+  url   : https://www.instagram.com/ankursingh_1234
+  icon  : fab fa-instagram
   color : 3b5998
 
 github:
-  url   : https://www.github.com/
+  url   : https://www.github.com/Ankur-singh
   icon  : fab fa-github
   color : 333333
 
-instagram:
-  url   : https://www.instagram.com/
-  icon  : fab fa-instagram
-  color : 405de6
-
 linkedin:
-  url   : https://www.linkedin.com/in/
+  url   : https://www.linkedin.com/in/ankur-singh-ml
   icon  : fab fa-linkedin-in
   color : 007bb5
 
 twitter:
-  url   : https://www.twitter.com/
+  url   : https://www.twitter.com/I_ankursingh
   icon  : fab fa-twitter
   color : 1da1f2
