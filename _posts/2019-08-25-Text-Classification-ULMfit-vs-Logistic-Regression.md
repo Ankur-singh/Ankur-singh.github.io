@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Text Classification:- ULMfit v/s Logistic Regression
 tags: [Machine Learing, Deep Learning, NLP, Fastai]
 style: border
