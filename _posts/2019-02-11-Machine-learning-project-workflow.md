@@ -1,4 +1,5 @@
 ---
+comments: true
 title: Complete workflow of a Machine Learning project
 tags: [Machine Learning, Sklearn, Preprocessing, fast.ai]
 style: fill
