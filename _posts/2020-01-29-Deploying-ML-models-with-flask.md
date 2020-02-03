@@ -43,7 +43,7 @@ This is all the code you need to build your first website with flask. You start 
 
 #### URLs 
 
-- **Simple route**
+##### - **Simple route**
 We already saw a simple route in our first example. These types of routes simply infos the web-app about the routes-functions mapping.
 
 ```python 
@@ -52,7 +52,7 @@ def index():
     return '<h1>This is the INDEX Page.</h1>'
 ```
 
-- **Dynamic route**
+##### - **Dynamic route**
 Instead of having a fixed URL for every person, we specify a template for the URL. If the entered URL matches the template, then the function is executed. The matched values is pass as an argument to the associated function. Flask has support for many other variable types like **int**, **float** and **path**.
 
 ```python
@@ -65,7 +65,7 @@ def profile(name):
 
 #### Templates
 
-- **Rendering HTML files**
+##### - **Rendering HTML files**
 Flask uses [jinja template engine](https://www.palletsprojects.com/p/jinja/) to render HTML pages. Also, we need to make sure that we have a templates folder inside our app directory, because by default flask will look inside **templates** directory for all your .html files.
 
 ```python
@@ -79,7 +79,7 @@ def index():
 **Recommended files:** [2_templates.py](https://github.com/Ankur-singh/flask_demo/blob/master/2_templates.py) & [index.html](https://github.com/Ankur-singh/flask_demo/blob/master/templates/index.html)
 
 
-- **Passing values to the front-end**
+##### - **Passing values to the front-end**
 We can pass values to the front-end by simply passing them as arguments to the `render_template()` along side the .html page that is to be rendered.
 
 You can access the variable by using `{{ <variable_name> }}` in you .html file
@@ -94,7 +94,7 @@ def heading():
 **Recommended files:** [2_templates.py](https://github.com/Ankur-singh/flask_demo/blob/master/2_templates.py) & [index2.html](https://github.com/Ankur-singh/flask_demo/blob/master/templates/index2.html)
 
 
-- **Extending base template**
+##### - **Extending base template**
 In a website, every page has a lot of redundant content. As a programmer you should always try your best to avoid redundant code. Jinja makes you life pretty easy.
 
 ```python
@@ -106,7 +106,7 @@ def jinja_extend():
 **Recommended files:** [2_templates.py](https://github.com/Ankur-singh/flask_demo/blob/master/2_templates.py) & [extend.html](https://github.com/Ankur-singh/flask_demo/blob/master/templates/extend.html)
 
 
-- **Lists in jinja**
+##### - **Lists in jinja**
 Jinja also provides support for collections in python. So, you can pass a list, string, tuple or dictionary to the front-end and jinja will take care of it.
 
 ```python
@@ -119,7 +119,7 @@ def jinja_list():
 **Recommended files:** [2_templates.py](https://github.com/Ankur-singh/flask_demo/blob/master/2_templates.py) & [list.html](https://github.com/Ankur-singh/flask_demo/blob/master/templates/list.html)
 
 
-- **Conditions in jinja**
+##### - **Conditions in jinja**
 Jinja also supports conditions. It can show some HTML code if condition is true and other HTML code if condition is false. This would come in handy in a lot of places.
 
 ```python
@@ -131,4 +131,27 @@ def jinja_conditions():
 
 **Recommended files:** [2_templates.py](https://github.com/Ankur-singh/flask_demo/blob/master/2_templates.py) & [condition.html](https://github.com/Ankur-singh/flask_demo/blob/master/templates/condition.html)
 
-#### Building an app
+#### Deploying app using flask
+
+Its pretty easy to convert any program (simple program) into a flask app. Just follow these steps.
+- Make your code modular
+Have all your code organised in form of functions. Try calling these functions from other python file, to see if you have not missed anything. To better understand what I mean by "make your code modular" have a look at [prime.py](https://github.com/Ankur-singh/flask_demo/blob/master/prime.py) & [prime_new.py](https://github.com/Ankur-singh/flask_demo/blob/master/prime_new.py)
+
+- Input & Output
+Until this point your program takes input from user and displays the output in the prompt. Its all standard input/output. When you are creating flask app, you input come from a webform and your output is displayed in the browser.
+Please have a look at [3_prime.py](https://github.com/Ankur-singh/flask_demo/blob/master/3_prime.py)
+
+#### Deploying ML models using flask
+
+When it comes to deplying ML model, it not very straight forward as creating a function. The challenge here is that machine learning models take very large time to train. Directly converting you code into a function means everytime the URL is accessed, a new model is trained from scratch. If your model takes 20 mins to train means it will take more that 20 mins to respond, every single time. 
+
+The way around this problems is to save the trained model (in-case of DL, you save the model weights) and load the model once when your start the flask app. Then call `model.predict()` every time a request is received. 
+
+There another important thing that is to be taken care off, INPUTs. For normal programs the transformation that you perform on the inputs are not dependent on the data. But in machine learning, all the transformation have some values that are calculated during the training phrase. You will need these values for transformation during the testing phrase. For small projects with very simple dataset and fewer transformations, its pretty easy to save and use these values later. But most of the time, even a simple dataset like "titanic" can require multiple transformations. Hence, instead of manually storing and loading these values is not recommended because it can get pretty messy, very soon. 
+
+Its recommended to use sklearn transformers because of its easy to use APIs. Also, you can easily pickle these objects and use them later. Always remember, in machine learning and deep learning projects, use the same pre-processing for training, testing & deployment. ML/DL models are susceptible to pre-processing and transformations. So, make sure you use libraries, tools & mechanisms that makes it super easy to reproduce pre-processing & transformation. 
+
+**Recommended files:** [iris.py](https://github.com/Ankur-singh/flask_demo/blob/master/iris.py), [iris_new.py](https://github.com/Ankur-singh/flask_demo/blob/master/iris_new.py) & [final_ml_flask.py](https://github.com/Ankur-singh/flask_demo/blob/master/final_ml_flask.py)
+
+
+Hope you got a glimse of how all these moving parts fit in together. Please refer the files and also pay close attention to the changes that I made. Thank you so much for reading it till the end.
