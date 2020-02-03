@@ -157,3 +157,6 @@ Its recommended to use sklearn transformers because of its easy to use APIs. Als
 Hope you got a glimse of how all these moving parts fit in together. Please refer the files and also pay close attention to the changes that I made. Thank you so much for reading it till the end. Here is a gift for you, list of some really good resources for flask:
 - https://hackersandslackers.com/series/building-flask-apps
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
+<br>
+<br>
