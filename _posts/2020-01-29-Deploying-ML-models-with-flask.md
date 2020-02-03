@@ -154,4 +154,6 @@ Its recommended to use sklearn transformers because of its easy to use APIs. Als
 **Recommended files:** [iris.py](https://github.com/Ankur-singh/flask_demo/blob/master/iris.py), [iris_new.py](https://github.com/Ankur-singh/flask_demo/blob/master/iris_new.py) & [final_ml_flask.py](https://github.com/Ankur-singh/flask_demo/blob/master/final_ml_flask.py)
 
 
-Hope you got a glimse of how all these moving parts fit in together. Please refer the files and also pay close attention to the changes that I made. Thank you so much for reading it till the end.
+Hope you got a glimse of how all these moving parts fit in together. Please refer the files and also pay close attention to the changes that I made. Thank you so much for reading it till the end. Here is a gift for you, list of some really good resources for flask:
+- https://hackersandslackers.com/series/building-flask-apps
+- https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
