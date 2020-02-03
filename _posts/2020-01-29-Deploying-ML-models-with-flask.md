@@ -2,7 +2,7 @@
 comments: true
 title: Deploying ML models with flask
 tags: [Machine Learning, flask, web development]
-style: fill
+style: border
 color: primary
 description: Learn to deploy you machine learning model using flask.
 ---
