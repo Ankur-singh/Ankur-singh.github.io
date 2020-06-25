@@ -19,11 +19,11 @@ There is very little genetics involve in the science of happiness. Nobody can be
 
 ## 2. The Unhappy Millionaire
 
-### More money won't make you happy
+#### More money won't make you happy
 
 Everyone wants more money, they think it will make them happy. But the truth is, after a certain amount of money, your happiness plateaus. You have to learn to be happy with what you have, because there is no limit to our greed, we will never be satisfied.
 
-### We suffer the most in our imagination
+#### We suffer the most in our imagination
 
 Our brain always over estimates things in our imagination. We over estimate how happy achieving some thing will make us. We also over estimate how sad losing something will be. 
 
@@ -33,7 +33,7 @@ We usually under estimate our brains ability to adapt. No matter the situation, 
 
 ## 3. A Silver Lining
 
-### Don't fall prey to wrong references
+#### Don't fall prey to wrong references
 
 We are never really objective with our choices about what will make us happy. Almost 50% people will be choose to earn 50K (instead of 100K) if everyone around them is making 25K. People are unemployed and happy if a lot of people around them are also unemployed. No matter whom you ask, "Are you happy with your social life?"; everyone will say NO because they will always find someone who is more social than them. Its all about the reference point we compare ourselves with.
 
