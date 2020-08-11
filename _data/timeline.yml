@@ -1,21 +1,19 @@
-- title: Student, College of Engineer, Pune (COEP)
-  from: 2014
-  to: 2018
-  description: BTech Information Technology.
+- title: Co-founder / ML Engineer, Ai Adventures, Pune
+  from: 2018
+  to: present
+  description: Project Manager, Lead Developer.
+
+  - title: Summer Intern, Credit Suisse, Pune.
+  from: May, 2017
+  to: July, 2017
+  description: Front-End Developer (Python & Flask).
 
 - title: Web-Team Head, COEP.
   from: 2017
   to: 2018
   description: Development & Management of all the website hosted on college website.
 
-- title: Summer Intern, Credit Suisse, Pune.
-  from: May, 2017
-  to: July, 2017
-  description: Front-End Developer (Python & Flask).
-
-- title: Co-founder / ML Engineer, Ai Adventures, Pune
-  from: 2018
-  to: present
-  description: Project Manager, Lead Devloper.
-
-- title: New
+- title: Student, College of Engineer, Pune (COEP)
+  from: 2014
+  to: 2018
+  description: BTech Information Technology.
