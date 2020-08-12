@@ -26,7 +26,7 @@ def send_message(msg, chat_id, bot_token):
 
 This is all the code you need. I know its not a lot of code but same is the case with many useful things. Useful things are simple by design. Instead of using `print()` you can use `send_message()` from above. I called it after each epoch to get the "val_loss" and "train_loss" while training models on colab. Heres how it looks:
 
-![](/assets/colab.jpg =320x)
+![image](/assets/colab.jpg =320x)
 
 Generally speaking, you can also use it to notify you ABOUT ANYTHING.
 
@@ -52,8 +52,15 @@ It should then return a JSON object that looks something like this:
 {"ok":true,"result":[{
     "update_id":36317827,
     "message":{"message_id":407,
-               "from":{"id":{CHAT_ID},"is_bot":false,"first_name":"Ankur","last_name":"Singh","language_code":"en"},
-               "chat":{"id":{CHAT_ID},"first_name":"Ankur","last_name":"Singh","type":"private"},
+               "from":{"id":{CHAT_ID},
+                        "is_bot":false,
+                        "first_name":"Ankur",
+                        "last_name":"Singh",
+                        "language_code":"en"},
+               "chat":{"id":{CHAT_ID},
+                        "first_name":"Ankur",
+                        "last_name":"Singh",
+                        "type":"private"},
                "date":1597155237,
                "text":"Hi bot"
                }
@@ -85,10 +92,12 @@ from functools import partial
 def send_message(msg, chat_id, bot_token):
     ...
 
-send_message = partial(send_message, chat_id=os.environ['CHAT_ID'], bot_token=os.environ['BOT_TOKEN'])
+send_message = partial(send_message, 
+                       chat_id=os.environ['CHAT_ID'], 
+                       bot_token=os.environ['BOT_TOKEN'])
 
-print('hello!')
-send_message('hello to you bot!') # sends message to your bot.
+# to sends message to your bot.
+send_message('hello to you bot!') 
 ```
 
 Now, using `send_message()` is as simple as calling `print()`. 
