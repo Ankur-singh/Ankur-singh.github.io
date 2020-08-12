@@ -38,11 +38,7 @@ First, we will have to create a bot. You need to use “TheBotfather” in the T
 
 In the chat with The Botfather, enter “/newbot”. It will ask you for a name, then a username for your bot. Once you provide both, The Botfather will provide you with a link to your bot and an API token.
 
-![image](assets/ankur.jpg)
-
-![image](ankur.jpg)
-
-![image](../assets/ankur.jpg)
+![image](/assets/ankur.jpg)
 
 Follow the link to your bot by clicking the link that looks like `t.me/{yourBotUsername}`. This is where you will receive messages.
 
