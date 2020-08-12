@@ -26,7 +26,7 @@ def send_message(msg, chat_id, bot_token):
 
 This is all the code you need. I know its not a lot of code but same is the case with many useful things. Useful things are simple by design. Instead of using `print()` you can use `send_message()` from above. I called it after each epoch to get the "val_loss" and "train_loss" while training models on colab. Heres how it looks:
 
-![image](/assets/colab.jpg =320x)
+![image](/assets/colab.jpg)
 
 Generally speaking, you can also use it to notify you ABOUT ANYTHING.
 
