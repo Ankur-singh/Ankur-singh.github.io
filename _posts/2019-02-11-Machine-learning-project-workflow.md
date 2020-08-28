@@ -66,7 +66,7 @@ After optimizing and cleaning the dataset we’ll read in whole dataset with pan
 
 After reading in our csv data as dataframes and processing it, we’ll use **feather format** to write and read our processed dataframes to disk. Feather format reads/writes to disk as fast as reading/writing to memory.
 
-### **Speeding up Things**
+#### **Speeding up Things**
 
 We can time your functions with *%time* in front of any function in your jupyter notebook and can measure how long it takes a function to run. In addition you can run *%prun* in front of any line of code in your notebook which runs a profiler that examines all the lines of code under the hood of that code statement.
 
@@ -86,7 +86,7 @@ Once you’re done iterating, then you can train the model on all the training d
 
 Machine learning models provide more information than predictions. In addition to predictions, we also want to know how confident we can be about these predictions.
 
-### a) Confidence Intervals based on standard deviation:
+#### a) Confidence Intervals based on standard deviation:
 
 If a trained random forest model sees a novel datapoint, the tree/estimator that assesses it will treat it differently than the information it has already seen. It may end up on an outlier branch of the decision tree. If we only use confidence intervals based on averages, the novel data point won’t be judged accurately. Instead we can use, standard deviation of the trees prediction to provide confidence levels for those predictions. If standard deviation is high, this means each tree is giving a very different predictions for a particular sample. If the observation is judged to be a very common, we’ll have tighter/smaller standard deviation.
 
@@ -94,7 +94,7 @@ Confidence intervals can help you learn about which groups or features the model
 
 Taking the standard deviation of the trees prediction can help us explore the unknowns about the data set. After plotting the trees predictions and confidence intervals with the different features, we can do exploratory data analysis on what’s important even when we don’t know what the feature exactly is. The bar charts of the confidence levels give us an intuition behind how to apply different feature groupings and we can identify which features contributed to low prediction accuracy. Are there some groups that the model isn’t confident about? This confidence value could also be used in as an end product, like in loan application. We could judge yes/no on giving a borrower a loan, and we could also provide a confidence level on whether or not the borrower will pay it back.
 
-### b) Feature importance :
+#### b) Feature importance :
 
 To determine feature importance, we need to build a Random Forest as fast as we can. You’re aiming for an accuracy score better than random, but not much more than that. Then we would plot the feature importance of the different fields in the analysis
 
@@ -108,7 +108,7 @@ Generally, throwing out redundant columns shouldn’t make your model worse; if 
 
 Understanding the important features of a dataset lets us concentrate on what matters and will make our models run faster. By removing low impact variables, we make our feature importance plots clearer, we can trust these features’ importance more.
 
-### c) Surfacing data leakage can be useful:
+#### c) Surfacing data leakage can be useful:
 
 What is data leakage? — A feature of the data becomes available that was not originally intended when the original data was input or when the dataset released. In other words, there’s information about dataset that you have that the client didn’t have at the time the dataset was created.
 
