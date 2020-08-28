@@ -2,8 +2,8 @@
 comments: true
 title: Telegram Bot
 tags: [Tips N Tricks, APIs]
-style: fill
-color: secondary
+style: border
+color: success
 description: Instead of printing something, send it to telegram. This is very useful if you have remote machines for training.
 ---
 
