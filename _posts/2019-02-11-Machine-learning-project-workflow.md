@@ -2,7 +2,7 @@
 comments: true
 title: Complete workflow of a Machine Learning project
 tags: [Machine Learning, Sklearn, Preprocessing, fast.ai]
-style: fill
+style: border
 color: secondary
 description: Learn to manage your next Machine Learning Project better.
 ---
