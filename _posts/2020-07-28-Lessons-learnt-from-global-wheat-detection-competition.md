@@ -1,10 +1,10 @@
 ---
 comments: true
-title: Lessons learnt from global wheat detection competition and winning my first medal
+title: Lessons learnt from global wheat detection competition
 tags: [Object detection, Pytorch, Kaggle, writing better code]
-style: fill
-color: secondary
-description: Everything that goes into winning a kaggle competition. Data augmentation, reading research papers, writing good and modular code for faster experimentation and much more. 
+style: border
+color: danger
+description: Everything that goes into winning a medal (bronze) in kaggle competition. Data augmentation, reading research papers, writing good and modular code for faster experimentation and much more. 
 ---
 
 I spent my last month (july, 2020) working on Global Wheat Detection competition hosted on Kaggle. I love computer vision and dataset was small (~615 MB). The very first thing that I do when participating in a kaggle competition is to look for a starter notebook. Often the selection is based on the time required to get it up and running locally. So once I find a good notebook, I try to recreate it. Simply download it, install the dependencies, update the paths and then `Run All`.  For this competitions, I started with [this notebook](https://www.kaggle.com/pestipeti/pytorch-starter-fasterrcnn-train). 
