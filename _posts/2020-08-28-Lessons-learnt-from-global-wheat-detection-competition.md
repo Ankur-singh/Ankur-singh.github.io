@@ -11,7 +11,7 @@ I spent my last month (july, 2020) working on Global Wheat Detection competition
 
 These model can take couple of hours to train. So, you have a lot of time to learn and explore once you get your starter notebook running locally. 
 
-### Philosophy time
+#### Philosophy time
 
 Generally speaking, in kaggle competitions, your chances of winning is determined by number of experiments you conduct. looks pretty simple in theory but is very complex in practice. each iteration has to be quick, you need to write modular code, testing your code, reproducible, etc. 
 
@@ -25,7 +25,7 @@ Most of the experiments can be grouped in the following :
 - Training Schedule, Optimizer, etc
 - Postprocess
 
-### Back to the competition
+#### Back to the competition
 
 Reading the starter notebook. When I am reading any code for the first time, my goal is not to understand it completely. Instead, I try to identify what each part of the code is doing. For example, which part is responsible for creating dataset?, where the model is created?, How is loss calculated?, etc. 
 
@@ -58,7 +58,7 @@ def get_train_transforms(img_sz):
 	)
 ```
 
-### Other novel techniques
+#### Other novel techniques
 
 While reading other kernels for data augmentation, I realized everyone was using *Mosaic*. Its a technique were we randomly select 4 images and stich them together to make a single image. But as soon as I started digging down the rabbit hole, I found out other novel techniques (like mixup and cutmix) for image augmentation. 
 
