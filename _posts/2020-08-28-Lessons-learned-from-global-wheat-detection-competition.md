@@ -7,7 +7,16 @@ color: danger
 description: Everything that goes into winning a medal (bronze) in Kaggle competition. Data augmentation, reading research papers, writing good and modular code for faster experimentation, and much more.  
 ---
 
-I spent my last month (July 2020) working on Global Wheat Detection competition hosted on Kaggle. I love computer vision and the dataset was small (~615 MB). The very first thing that I do when participating in a Kaggle competition is to look for a starter notebook. Often the selection is based on the time required to get it up and running locally. So once I find a good notebook, I try to recreate it. Simply download it, install the dependencies, update the paths and then `Run All`.  For this competition, I started with this notebook.
+I spent my last month (July 2020) working on Global Wheat Detection competition hosted on Kaggle. I love computer vision and the dataset was small (~615 MB). 
+
+#### About the competition
+In this competition, the task was to detect wheat heads from outdoor images of wheat plants, including wheat datasets from around the globe. However, accurate wheat head detection in outdoor field images can be visually challenging. There is often overlap of dense wheat plants, and the wind can blur the photographs. Both make it difficult to identify single heads. Additionally, appearances vary due to maturity, color, genotype, and head orientation. Finally, because wheat is grown worldwide, different varieties, planting densities, patterns, and field conditions must be considered. Models developed for wheat phenotyping need to generalize between different growing environments.
+
+You can read more [about the competition](https://www.kaggle.com/c/global-wheat-detection/) on Kaggle.
+
+---
+
+The very first thing that I do when participating in a Kaggle competition is to look for a starter notebook. Often the selection is based on the time required to get it up and running locally. So once I find a good notebook, I try to recreate it. Simply download it, install the dependencies, update the paths and then `Run All`.  For this competition, I started with this notebook.
 
 These models can take a couple of hours to train. So, you have a lot of time to learn and explore once you get your starter notebook running locally. 
 
