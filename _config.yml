@@ -5,8 +5,8 @@
 title               : Ankur Singh 
 description         : >-                               # >- means to ignore newlines until "url:"
                       I prefer coffee over tea,
-                      Jupyter Notebook over IDEs
-                      and never take peoples opinion (DATA is my thing).
+                      Jupyter Notebooks over IDEs
+                      and never take people's opinion (DATA is my thing).
 
 url                 : ""                               # base hostname & protocol for your site (e.g. http://example.com)
 baseurl             : ""                    # subpath of your site (e.g. /blog) [IMPORTANT: use "" if your are hosting at https://username.github.io directly]
