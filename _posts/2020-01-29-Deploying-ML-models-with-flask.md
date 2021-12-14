@@ -82,7 +82,7 @@ def index():
 ##### - **Passing values to the front-end**
 We can pass values to the front-end by simply passing them as arguments to the `render_template()` along side the .html page that is to be rendered.
 
-You can access the variable by using `{{ <variable_name> }}` in you .html file
+You can access the variable by using `{{ variable_name }}` in you .html file
 
 ```python
 @app.route('/heading')

@@ -20,8 +20,8 @@ author:
   email             : as.ankursingh3.1@gmail.com
   github            : Ankur-singh
   twitter           : I_ankursingh
-  instagram         : ankursingh_1234
   linkedin          : ankur-singh-ml
+# instagram         : ankursingh_1234
 # medium            : your_username
 # behance           : your_username
 # dribbble          : your_username
@@ -37,7 +37,7 @@ author:
 
 
 ### Pagination ###
-paginate: 6
+paginate: 1000
 paginate_path: "/articles/page-:num/"
 
 
