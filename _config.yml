@@ -2,31 +2,45 @@
 ## Docs: https://youssefraafatnasry.github.io/portfolYOU/docs/
 
 ### Site Settings ###
-title               : Ankur Singh 
-description         : >-                               # >- means to ignore newlines until "url:"
+title               : Ankur Singh
+description         : >-
                       I prefer coffee over tea,
                       Jupyter Notebooks over IDEs
                       and never take people's opinion (DATA is my thing).
 
-url                 : ""                               # base hostname & protocol for your site (e.g. http://example.com)
-baseurl             : ""                    # subpath of your site (e.g. /blog) [IMPORTANT: use "" if your are hosting at https://username.github.io directly]
-repository          : Ankur-singh.github.io    # repository metadata on GitHub Pages [know more at https://help.github.com/en/articles/repository-metadata-on-github-pages]
-# remote_theme       : YoussefRaafatNasry/portfolYOU    # uncomment this if you are using it as a remote theme
+baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+repository          : Ankur-singh/Ankur-singh.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
+remote_theme        : YoussefRaafatNasry/portfolYOU@v2.3.0
+open_new_tab        : false                             # Opens external URLs in new tab (works for posts, projects and navbar only)
+
+
+### Plugins ###
+plugins:
+  - jemoji
+
+
+### Navbar Settings ###
+nav_exclude:                                            # The following paths are excluded from navbar
+  - pages/tags.html
+  - pages/404.html
+  - pages/index.md
+
 
 ### Author Info ###
 author:
   name              : Ankur Singh
-  image             : assets/ankur.jpg # https://bit.ly/2KCvgVJ
+  image             : assets/ankur.jpg
   email             : as.ankursingh3.1@gmail.com
   github            : Ankur-singh
-  twitter           : I_ankursingh
+  kaggle            : ankursingh12
   linkedin          : ankur-singh-ml
-# instagram         : ankursingh_1234
+  twitter           : I_ankursingh
 # medium            : your_username
-# behance           : your_username
 # dribbble          : your_username
 # facebook          : your_username
+# behance           : your_username
 # gitlab            : your_username
+# instagram         : your_username
 # soundcloud        : your_username
 # spotify           : your_username
 # stackoverflow     : your_user_id
@@ -34,15 +48,11 @@ author:
 # twitch            : your_username
 # vimeo             : your_username
 # youtube           : your_channel_name
+# keybase           : your_username
 
 
-### Pagination ###
-paginate: 1000
-paginate_path: "/articles/page-:num/"
-
-
-### Posts Permalink ###
-permalink: articles/:title
+### Posts ###
+permalink: /blog/:title
 
 
 ### Collections ###
@@ -52,6 +62,18 @@ collections:
     permalink: /projects/:name
 
 
+### Disqus ###
+disqus:
+  shortname: ankur-singh                     # Your website Shortname on disqus
+
+
+### Analytics ###
+analytics:
+  enabled: false                                        # Set true to enable analytics
+  google:
+    tracking_id: your-google-tracking-id
+
+
 ### Defaults for collections ###
 defaults:
   - scope:
@@ -59,12 +81,16 @@ defaults:
       type: "projects"
     values:
       layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true                                   # Set to true to enable disqus comments
 
 
 ### Exclude from processing ###
 exclude:
-- README.md
-- CONTRIBUTING.md
-- LICENSE
-- Gemfile
-- Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - "*.log"

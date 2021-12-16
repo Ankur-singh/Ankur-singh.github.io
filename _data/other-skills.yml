@@ -16,4 +16,4 @@
 
 - name: CRM tools
   percentage: 85
-  color:
+  color: success

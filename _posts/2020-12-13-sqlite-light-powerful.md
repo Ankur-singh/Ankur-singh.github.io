@@ -326,9 +326,3 @@ Finally, this is how you print something in SQL. 😁
     sqlite> select 'thank you!';thank you!
 
 Hope you had a wonderful time reading it. Next blog will discuss “How to run SQL query using/from python?”. So stay tuned! Also, don’t forget to clap and share.
-
-By [Ankur Singh](https://medium.com/@iankursingh) on [December 13, 2020](https://medium.com/p/68151f3dba53).
-
-[Canonical link](https://medium.com/@iankursingh/sqlite-light-powerful-68151f3dba53)
-
-Exported from [Medium](https://medium.com) on December 14, 2021.

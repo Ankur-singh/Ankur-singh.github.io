@@ -113,9 +113,3 @@ Nothing comes even close. Julia is a good contender, but the python eco-system f
 Hence, with Data Science and Machine Learning, Python is also becoming a household name.
 
 Hope you learnt something new and found your answer to “Why python?”
-
-By [Ankur Singh](https://medium.com/@iankursingh) on [March 16, 2021](https://medium.com/p/af7b663e6e08).
-
-[Canonical link](https://medium.com/@iankursingh/why-python-af7b663e6e08)
-
-Exported from [Medium](https://medium.com) on December 14, 2021.

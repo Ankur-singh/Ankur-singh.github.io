@@ -254,9 +254,3 @@ Remember, the goal is not just to make the program work. The goal is to learn ho
 ### Reference
 
 *   [https://greenteapress.com/thinkpython2/html/thinkpython2021.html](https://greenteapress.com/thinkpython2/html/thinkpython2021.html)
-
-By [Ankur Singh](https://medium.com/@iankursingh) on [February 27, 2021](https://medium.com/p/d273f8c64fa4).
-
-[Canonical link](https://medium.com/@iankursingh/debugging-in-python-d273f8c64fa4)
-
-Exported from [Medium](https://medium.com) on December 14, 2021.

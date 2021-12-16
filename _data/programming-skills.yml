@@ -10,11 +10,11 @@
   percentage: 90
   color: danger
 
-- name: Full Stack Web Development
-  percentage: 70
+- name: SQL and NoSQL databases
+  percentage: 80
   color: 
 
-- name: Git
-  percentage: 75
+- name: Git, CI/CD
+  percentage: 70
   color: info
 

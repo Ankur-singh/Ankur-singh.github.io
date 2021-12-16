@@ -185,9 +185,3 @@ Here is a list of some more blogs on pathlib.
 *   [https://treyhunner.com/2019/01/no-really-pathlib-is-great/](https://treyhunner.com/2019/01/no-really-pathlib-is-great/)
 
 I hope that more and more people start using `pathlib`. It’s too good to be ignored!
-
-By [Ankur Singh](https://medium.com/@iankursingh) on [November 21, 2020](https://medium.com/p/5212accde268).
-
-[Canonical link](https://medium.com/@iankursingh/why-you-should-always-use-pathlib-5212accde268)
-
-Exported from [Medium](https://medium.com) on December 14, 2021.

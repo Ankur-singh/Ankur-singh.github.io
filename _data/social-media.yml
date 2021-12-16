@@ -6,10 +6,10 @@ email:
   icon  : fas fa-envelope
   color : db4437
 
-instagram:
-  url   : https://www.instagram.com/
-  icon  : fab fa-instagram
-  color : 3b5998
+kaggle:
+  url   : https://www.kaggle.com/
+  icon  : fab fa-kaggle
+  color : 15aabf
 
 github:
   url   : https://www.github.com/
