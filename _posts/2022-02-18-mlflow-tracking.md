@@ -63,7 +63,7 @@ mlflow server --backend-store-uri sqlite:///./mlflow.db --default-artifact-root 
 
 Here, instead of sqlite & local file system, you can use any combination of *backend-store* and *artifact-store*.
 
-**Note:** Don't try to run MLflow inside docker container if you plan to use local file system to store your artifacts. The best practice for artifact storage with a remote tracking server is to configure the server to use an artifact root accessible to both clients and the server (e.g. an S3 bucket or Azure Blob Storage URI). Read [this Stack Overflow discussion] for better understanding. 
+**Note:** Don't try to run MLflow inside docker container if you plan to use local file system to store your artifacts. The best practice for artifact storage with a remote tracking server is to configure the server to use an artifact root accessible to both clients and the server (e.g. an S3 bucket or Azure Blob Storage URI). Read [this Stack Overflow discussion](https://stackoverflow.com/questions/52331254/how-to-store-artifacts-on-a-server-running-mlflow) for better understanding. 
 
 Once we have the server up and running, you will see something like this in your std-output. 
 
