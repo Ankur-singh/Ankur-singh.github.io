@@ -14,7 +14,7 @@
   percentage: 80
   color: 
 
-- name: Git, CI/CD
-  percentage: 70
+- name: Git, CI/CD, Docker
+  percentage: 90
   color: info
 
