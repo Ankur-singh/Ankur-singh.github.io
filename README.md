@@ -11,6 +11,6 @@ sudo docker run -it --name jekyll_dev -v $(pwd):/srv/jekyll -p 4000:4000 jekyll/
 cd /srv/jekyll
 bunble install
 bundle exec jekyll serve --host 0.0.0.0 --incremental
-`
+```
 
 Now, you can edit the code and see the changes in your browser.
