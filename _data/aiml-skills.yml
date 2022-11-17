@@ -1,0 +1,25 @@
+- name: Python
+  desc: OOPs, Packaging, Design Patterns, Pytest
+  percentage: 90
+  color: dark
+
+- name: Data Science
+  desc: Pandas, Numpy, Matplotlib, SQL, BigQuery
+  percentage: 85
+  color: success
+
+- name: Machine Learning
+  desc: Sklearn, LightGBM, CatBoost
+  percentage: 90
+  color: danger
+
+- name: Deep Learning
+  desc: Pytorch, Keras, Fastai
+  percentage: 80
+  color: 
+
+- name: Computer Vision
+  desc: OpenCV, Object Detection, Segmentaion, OCR
+  percentage: 90
+  color: info
+

@@ -16,8 +16,8 @@ I have also worked as a Team Lead (ML) at [Zoop.One](https://zoop.one/){:target=
 I spend most of my waking hours developing ML projects, reading & implementing research papers, contributing to open-source projects and participating in Kaggle Data Science competitions (by the time you reading it, I might have become a Kaggle Competition Expert). At other times you will find me reading books (mostly biographies) or exercising.
 
 <div class="row">
-{% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
-{% include about/skills.html title="Other Skills" source=site.data.other-skills %}
+{% include about/skills.html title="AI/ML Skills" source=site.data.aiml-skills %}
+{% include about/skills.html title="S/W Development Skills" source=site.data.sw-skills %}
 </div>
 
 <div class="row">
