@@ -1,24 +1,24 @@
-- name: Version Control
+- name: **Version Control**
   desc: Git, GitHub, Branching strategies
   percentage: 85
   color: info
 
-- name: DevOps
+- name: **DevOps**
   desc: Linux, Docker, Docker Compose, K8s 
   percentage: 75
   color: danger
 
-- name: Automation
+- name: **Automation**
   desc: CI/CD, GitHub Actions, Makefile, invoke
   percentage: 70
   color: warning
 
-- name: Databases
+- name: **Databases**
   desc: Postgres, SQLite3, MongoDB, Redis, BigQuery
   percentage: 80
-  color: dark
+  color: 
 
-- name: Web Development & Web-Scraping
+- name: **Web Development & Web-Scraping**
   desc: FastAPI, Flask, Steamlit, Gradio
   percentage: 85
   color: success
