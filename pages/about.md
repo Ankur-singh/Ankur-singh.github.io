@@ -19,11 +19,11 @@ I spend most of my waking hours developing ML projects, reading & implementing r
 
 ## Acheivements
 
-- Speaker at Intel oneAPI DevSummit for AI and HPC 2022 - [Link](https://software.seek.intel.com/oneapi-devsummit-ai-hpc-2022)
-- Got featured in Spartan Daily (SJSU newspaper) - [Link](https://issuu.com/spartandaily/docs/sd101922all_rev01_1_)
-- "AI for Social Good" Grand Prize winner, at Intel Innovation 2022 - [Link](https://www.linkedin.com/posts/intel-software_intelon-developer-coding-activity-6980704410574233600-dnkh/)
-- Kaggle Competitions Expert - [Link](https://www.kaggle.com/ankursingh12)
-- Author "Colab-everything" python package, more than 24K downloads - [Link](https://pypi.org/project/colab-everything/)
+- Speaker at Intel oneAPI DevSummit for AI and HPC 2022 - [Link](https://software.seek.intel.com/oneapi-devsummit-ai-hpc-2022){:target="_blank"}
+- Got featured in Spartan Daily (SJSU newspaper) - [Link](https://issuu.com/spartandaily/docs/sd101922all_rev01_1_){:target="_blank"}
+- "AI for Social Good" Grand Prize winner, at Intel Innovation 2022 - [Link](https://www.linkedin.com/posts/intel-software_intelon-developer-coding-activity-6980704410574233600-dnkh/){:target="_blank"}
+- Kaggle Competitions Expert - [Link](https://www.kaggle.com/ankursingh12){:target="_blank"}
+- Author "Colab-everything" python package, more than 24K downloads - [Link](https://pypi.org/project/colab-everything/){:target="_blank"}
 
 
 <div class="row">
