@@ -3,7 +3,7 @@ comments: true
 title: The Ultimate Training Loop
 tags: [Deep Learning, Pytorch, Fastai]
 style: border
-color: warning
+color: primary
 description: Super charge your training loop with callbacks.
 ---
 
