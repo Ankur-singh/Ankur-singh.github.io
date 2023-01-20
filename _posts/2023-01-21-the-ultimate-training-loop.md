@@ -889,4 +889,4 @@ Here are some of the most important takeaways:
 - You can also pass callbacks to the `fit()` method. These callbacks are automatically removed after that training loop.
 
 
-You can accomplish much more when you combine Callbacks with Pytorch Hooks. In the next blog, we will be discussing Hooks in detail and will write some amazing callbacks. Until next time 👋
+You can accomplish much more when you combine Callbacks with Pytorch Hooks. In the next blog, we will be discussing Hooks in detail and will write some amazing callbacks. Until next time . . .
