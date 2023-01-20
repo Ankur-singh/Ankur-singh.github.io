@@ -4,7 +4,7 @@ title: The Hitchhiker's Guide to `sys.path`
 tags: [python, advance]
 style: border
 color: secondary
-description: I 
+description: Learn how python import statement works, and explore pros and cons of different approaches.   
 ---
 
 **Disclaimer:** This is a very technical blog. The ideas discussed here will not be immediately useful but if you are someone who is into developing python packages or production applications then this knowledge will surely help to become better at it.
