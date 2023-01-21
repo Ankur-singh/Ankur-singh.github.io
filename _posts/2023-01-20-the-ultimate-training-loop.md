@@ -14,7 +14,7 @@ Writing a train loops is one of the most tedious tasks in Deep Learning.
 
 In this blog, I will discuss the training loop proposed by Jeremy Howard in Part 2 of the 2022 course. I think this is the last training loop that you will ever need. Its infinitely flexible and super easy to use once you get the hang of it. Lets take a look at it. 
 
-The blog can also be accessed as Jupyter notebook [here](https://github.com/Ankur-singh/personal_projects/blob/master/Notebooks/Ultimate_Training_Loop.ipynb).
+**Note:** The blog can also be accessed as Jupyter notebook [here](https://github.com/Ankur-singh/personal_projects/blob/master/Notebooks/Ultimate_Training_Loop.ipynb). I feel it has much better format, code output, as well as a link to open it in Google Colab.
 
 **Disclaimer:** Most of the code snippets and ideas used in this blog are taken from fastai. So, credit for everything good should go to Jeremy Howard, and everything bad or mediocre is my work. The main reason for writing the blog was to consolidate my learning.
 
@@ -23,7 +23,7 @@ The blog can also be accessed as Jupyter notebook [here](https://github.com/Anku
 I will start by writing all the necessary code. Its okay if you don't understand it completely. In fact, even I am exploring. But don't worry, I will try my best to highlight and explain the code snippets that are important to understanding this blog. The main focus of this blog is to get you excited about this training loop and show you "how to use it" through examples.
 
 
-```
+```python
 import torch
 import fastcore.all as fc
 from torch import nn, optim
@@ -33,7 +33,7 @@ from torch.nn import functional as F
 ```
 
 
-```
+```python
 # Callback Utilities
 
 class CancelFitException(Exception): pass
@@ -55,9 +55,7 @@ Next, we defined a `Callback` class and `run_cbs` function. The `run_cbs` functi
 We start by sorting our callbacks based on `order` (hence, the `Callback` class has a static variable named `order`). Then, for each callback in the sorted list if the particular method is present, then it will be called with *learner* as an argument. 
 
 
-```
-# Main Training Loop
-
+```python
 class _CbCtxInner:
     """
     Builds a context dynamically
@@ -71,10 +69,22 @@ class _CbCtxInner:
             return exc_type==chk_exc
         except chk_exc: pass
         finally: self.outer.callback(f'cleanup_{self.nm}')
+```
+
+The `_CbCtxInner` class is a super compact way of defining a context that does the following:
+- Dynamically builds a context object
+- Runs `before_<context_name>` method (of all callbacks) when you enter the context.
+- When you exit the context
+    - Runs `after_<context_name>` method (of all callbacks)
+    - Handles `Cancel<Context_name>Exception`
+    - Runs `cleanup_<context_name>` methods in the finally block.
 
 
+```python
+# Main training loop
 class Learner():
-    def __init__(self, model, dls=(0,), loss_func=F.mse_loss, lr=0.1, cbs=None, opt_func=optim.SGD):
+    def __init__(self, model, dls=(0,), loss_func=F.mse_loss,
+                    lr=0.1, cbs=None, opt_func=optim.SGD):
         cbs = fc.L(cbs)
         fc.store_attr()
 
@@ -97,7 +107,7 @@ class Learner():
                         self.callback('after_step')
                         self.zero_grad()
     
-    def fit(self, n_epochs=1, train=True, valid=True, cbs=None, lr=None):
+    def fit(self,n_epochs=1,train=True,valid=True,cbs=None,lr=None):
         cbs = fc.L(cbs)
         # `add_cb` and `rm_cb` were added in lesson 18
         for cb in cbs: self.cbs.append(cb)
@@ -105,7 +115,8 @@ class Learner():
             self.n_epochs = n_epochs
             self.epochs = range(n_epochs)
             if lr is None: lr = self.lr
-            if self.opt_func: self.opt = self.opt_func(self.model.parameters(), lr)
+            if self.opt_func: 
+                self.opt = self.opt_func(self.model.parameters(), lr)
             with self.cb_ctx('fit'):
                 for self.epoch in self.epochs:
                     if train: self.one_epoch(True)
@@ -114,7 +125,8 @@ class Learner():
             for cb in cbs: self.cbs.remove(cb)
 
     def __getattr__(self, name):
-        if name in ('predict','get_loss','backward','step','zero_grad'): return partial(self.callback, name)
+        if name in ('predict','get_loss','backward','step','zero_grad'): 
+            return partial(self.callback, name)
         raise AttributeError(name)
 
     def callback(self, method_nm): run_cbs(self.cbs, method_nm, self)
@@ -123,17 +135,7 @@ class Learner():
     def training(self): return self.model.training
 ```
 
-### TL;DR
-
-The `_CbCtxInner` class is a super compact way of defining a context that does the following:
-- Dynamically builds a context object
-- Runs `before_<context_name>` method (of all callbacks) when you enter the context.
-- When you exit the context
-    - Runs `after_<context_name>` method (of all callbacks)
-    - Handles `Cancel<Context_name>Exception`
-    - Runs `cleanup_<context_name>` methods in the finally block.
-
- The above code might look daunting so here is a simplified version of it.
+ The above code might look daunting so here is a simplified version of `one_epoch` and `fit` method.
 
 ```python
 def one_epoch(self, train):
@@ -167,8 +169,6 @@ def fit(self, n_epochs=1, train=True, valid=True, cbs=None, lr=None)
         if train: self.one_epoch(True)
         if valid: torch.no_grad()(self.one_epoch)(False)
     self.callback('after_fit')               # Fit End
-
-
 ```
 
 There are two interesting things in this training loop:
@@ -180,83 +180,36 @@ Both these features might look very simple at first, but trust me its very power
 But before we can test this loop, we will need some data and a model, right? I plan to keep it simple so that we can focus on the topic at hand. When it comes to keeping things simple, whats better than *fashion_mnist* and basic CNN?
 
 
-```
+```python
 from torchvision import transforms as T
 from torchvision.datasets import FashionMNIST
 from torch.utils.data import DataLoader
 ```
 
 
-```
+```python
 BS = 64
 
 tfms = T.Compose([T.ToTensor(), T.Normalize((0.5,), (0.5,))])
 
-train_ds = FashionMNIST('./data', train=True, transform=tfms, download=True)
-test_ds = FashionMNIST('./data', train=False, transform=tfms, download=True)
+train_ds = FashionMNIST('./data',train=True,transform=tfms,download=True)
+test_ds = FashionMNIST('./data',train=False,transform=tfms,download=True)
 
 train_dl = DataLoader(train_ds, batch_size=BS, shuffle=True)
 test_dl = DataLoader(test_ds, batch_size=BS, shuffle=False)
-```
-
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz to ./data/FashionMNIST/raw/train-images-idx3-ubyte.gz
-
-
-
-      0%|          | 0/26421880 [00:00<?, ?it/s]
-
-
-    Extracting ./data/FashionMNIST/raw/train-images-idx3-ubyte.gz to ./data/FashionMNIST/raw
-    
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-labels-idx1-ubyte.gz
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-labels-idx1-ubyte.gz to ./data/FashionMNIST/raw/train-labels-idx1-ubyte.gz
-
-
-
-      0%|          | 0/29515 [00:00<?, ?it/s]
-
-
-    Extracting ./data/FashionMNIST/raw/train-labels-idx1-ubyte.gz to ./data/FashionMNIST/raw
-    
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-images-idx3-ubyte.gz
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-images-idx3-ubyte.gz to ./data/FashionMNIST/raw/t10k-images-idx3-ubyte.gz
-
-
-
-      0%|          | 0/4422102 [00:00<?, ?it/s]
-
-
-    Extracting ./data/FashionMNIST/raw/t10k-images-idx3-ubyte.gz to ./data/FashionMNIST/raw
-    
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-labels-idx1-ubyte.gz
-    Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-labels-idx1-ubyte.gz to ./data/FashionMNIST/raw/t10k-labels-idx1-ubyte.gz
-
-
-
-      0%|          | 0/5148 [00:00<?, ?it/s]
-
-
-    Extracting ./data/FashionMNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/FashionMNIST/raw
-    
+```    
 
 
 Its much easier if we put both the dataloaders together in a single object. So, lets make a very simple class for this.
 
 
-```
+```python
 class DataLoaders:
     def __init__(self, *dls): self.train,self.valid = dls[:2]
-```
 
-
-```
 dls = DataLoaders(train_dl, test_dl)
 dls.train, dls.valid
 ```
-
-
-
 
     (<torch.utils.data.dataloader.DataLoader>,
      <torch.utils.data.dataloader.DataLoader>)
@@ -266,7 +219,7 @@ dls.train, dls.valid
 Perfect, we have our data in place. Next, we need to build our model. We will build a very simple CNN model
 
 
-```
+```python
 def get_model():
     return nn.Sequential(nn.Conv2d(1, 8, 3), nn.ReLU(),
                       nn.Conv2d(8, 16, 3), nn.ReLU(),
@@ -277,9 +230,6 @@ def get_model():
 model = get_model()
 model
 ```
-
-
-
 
     Sequential(
       (0): Conv2d(1, 8, kernel_size=(3, 3), stride=(1, 1))
@@ -298,23 +248,19 @@ model
 One last thing, our loss function
 
 
-```
+```python
 loss_func = nn.CrossEntropyLoss()
+```
+
+Yet another thing, we need a mechanism to track our metrics and loss during training. We will be using `torcheval` package as it provides a standard interface for tracking metrics and loss. This uniform interface will make it super easily to integrate in our training loop. To install it, run the following command: 
+
+```bash
+pip install -q torcheval
 ```
 
 I am cheating a bit by using a callback even though I have not discussed it. But bear with me, it will all make sense when we will talk about callbacks. For now, just think of it as a class responsible for tracking metrics and loss, and also printing them after each epoch.
 
-
-```
-!pip install -q torcheval
-```
-
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m121.1/121.1 KB[0m [31m12.6 MB/s[0m eta [36m0:00:00[0m
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m78.1/78.1 KB[0m [31m2.5 MB/s[0m eta [36m0:00:00[0m
-    [?25h
-
-
-```
+```python
 from copy import copy
 from collections.abc import Mapping
 from torcheval.metrics import MulticlassAccuracy, Mean
@@ -334,7 +280,8 @@ class MetricsCB(Callback):
 
     def _log(self, d): print(d)
     def before_fit(self, learn): learn.metrics = self
-    def before_epoch(self, learn): [o.reset() for o in self.all_metrics.values()]
+    def before_epoch(self, learn): 
+        [o.reset() for o in self.all_metrics.values()]
 
     def after_epoch(self, learn):
         log = {k:f'{v.compute():.3f}' for k,v in self.all_metrics.items()}
@@ -346,10 +293,7 @@ class MetricsCB(Callback):
         x,y,*_ = to_cpu(learn.batch)
         for m in self.metrics.values(): m.update(to_cpu(learn.preds), y)
         self.loss.update(to_cpu(learn.loss), weight=len(x))
-```
 
-
-```
 metrics = MetricsCB(accuracy=MulticlassAccuracy())
 ```
 
@@ -362,9 +306,9 @@ The very first thing that we should do is define `predict`, `get_loss`, `backwar
 To accomplish this, we can simply inherit the `Learner` class and implement these method as follows:
 
 
-```
+```python
 class TrainLearner(Learner):
-    def predict(self): self.preds = self.model(self.batch[0])   # batch -> (x, y)
+    def predict(self): self.preds = self.model(self.batch[0]) # batch->(x,y)
     def get_loss(self): self.loss = self.loss_func(self.preds, self.batch[1])
     def backward(self): self.loss.backward()
     def step(self): self.opt.step()
@@ -374,8 +318,8 @@ class TrainLearner(Learner):
 As you can see, all our methods are so concise and to the point. Lets train our model.
 
 
-```
-learner = TrainLearner(get_model(), dls, cbs=metrics, loss_func=loss_func)
+```python
+learner = TrainLearner(get_model(),dls,cbs=metrics,loss_func=loss_func)
 learner.fit(2)
 ```
 
@@ -390,9 +334,10 @@ This `TrainLearner` class can now be used to train any model on any dataset if y
 For example, you want to introduce *momentum*
 
 
-```
+```python
 class MomentumLearner(TrainLearner):
-    def __init__(self, model, dls=(0,), loss_func=F.mse_loss, lr=0.1, cbs=None, opt_func=optim.SGD, mom=0.85):
+    def __init__(self, model, dls=(0,), loss_func=F.mse_loss, lr=0.1, 
+                        cbs=None, opt_func=optim.SGD, mom=0.85):
         self.mom = mom
         super().__init__(model, dls, loss_func, lr, cbs, opt_func)
     
@@ -404,8 +349,8 @@ class MomentumLearner(TrainLearner):
 We will start by inheriting the `TrainLearner` class. We will update the `__init__` method to take an extra parameter (`mom`). Next, we just need to update the `zero_grad` method to multiply all the gradients with `self.mom` instead of zeroing them. 
 
 
-```
-learner = MomentumLearner(get_model(), dls, cbs=metrics, loss_func=loss_func)
+```python
+learner = MomentumLearner(get_model(),dls,cbs=metrics,loss_func=loss_func)
 learner.fit(2)
 ```
 
@@ -430,7 +375,7 @@ We will start by building some simple callbacks and gradually build our way to m
 Lets write a basic callback that will stop the training after one batch. To stop the training after one batch, you can just raise `CancelFitException` after batch. Heres the code
 
 
-```
+```python
 class SingleBatchCB(Callback):
     def after_batch(self, learner): 
         print('[SingleBatchCB] Terminating . . . ')
@@ -440,9 +385,9 @@ class SingleBatchCB(Callback):
 Its pretty straight forward. Lets see it in action.
 
 
-```
+```python
 cbs = [metrics, SingleBatchCB()]
-learner = MomentumLearner(get_model(), dls, cbs=cbs, loss_func=loss_func)
+learner = MomentumLearner(get_model(),dls,cbs=cbs,loss_func=loss_func)
 learner.fit(2)
 ```
 
@@ -454,7 +399,7 @@ The training terminates immediately even after calling `fit()` with 2 epochs.
 Similarly, heres the code for `SingleEpochCB`
 
 
-```
+```python
 class SingleEpochCB(Callback):
     def after_epoch(self, learner): 
         if not learner.model.training:
@@ -465,9 +410,9 @@ class SingleEpochCB(Callback):
 Here, we have one extra thing. Both training and validation are epochs. To differentiate them, we can use the `learner.model.training` attribute. In the above cell, we will only raise exception if its a validation epoch.
 
 
-```
+```python
 cbs = [metrics, SingleEpochCB()]
-learner = MomentumLearner(get_model(), dls, cbs=cbs, loss_func=loss_func)
+learner = MomentumLearner(get_model(),dls,cbs=cbs,loss_func=loss_func)
 learner.fit(2)
 ```
 
@@ -485,8 +430,10 @@ Both these callbacks can be used to quickly test if the code is working properly
 The training is pretty slow on CPU. So lets write a callback that would move our model and batch to GPU.
 
 
-```
-def_device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
+```python
+def_device = ('mps' if torch.backends.mps.is_available() \
+                    else 'cuda' if torch.cuda.is_available() \
+                    else 'cpu')
 
 def to_device(x, device=def_device):
     if isinstance(x, torch.Tensor): return x.to(device)
@@ -496,13 +443,14 @@ def to_device(x, device=def_device):
 class DeviceCB(Callback):
     def __init__(self, device=def_device): self.device=device
     def before_fit(self, learn): learn.model.to(self.device)
-    def before_batch(self, learn): learn.batch = to_device(learn.batch, self.device)
+    def before_batch(self, learn): 
+        learn.batch = to_device(learn.batch, self.device)
 ```
 
 `DeviceCB` simply moves the *model* to device *before_fit*, and moves the *batch* to device *before_batch*.
 
 
-```
+```python
 cbs = [metrics, DeviceCB()]
 learner = MomentumLearner(get_model(), dls, cbs=cbs, loss_func=loss_func)
 learner.fit(2)
@@ -517,16 +465,16 @@ learner.fit(2)
 This time around, the training was much quicker. We can make the training even faster by using *channel last* memory format. You can read more about it [here](https://pytorch.org/blog/accelerating-pytorch-vision-models-with-channels-last-on-cpu/). Lets write a callback for that
 
 
-
-
-```
+```python
 class ChannelLastCB(Callback):
-    def before_fit(self, learn): learn.model = learn.model.to(memory_format=torch.channels_last)
-    def before_batch(self, learn): learn.batch[0] = learn.batch[0].contiguous(memory_format=torch.channels_last)
+    def before_fit(self, learn): 
+        learn.model = learn.model.to(memory_format=torch.channels_last)
+    def before_batch(self, learn): 
+        learn.batch[0] = learn.batch[0].contiguous(memory_format=torch.channels_last)
 ```
 
 
-```
+```python
 cbs = [metrics, ChannelLastCB(), DeviceCB()]
 learner = MomentumLearner(get_model(), dls, cbs=cbs, loss_func=loss_func)
 learner.fit(2)
@@ -547,10 +495,11 @@ Earlier we inherited the `Learner` class to define `TrainLearner`. We can also i
 Here is a `TrainCB` that will define `predict`, `get_loss`, `backward`, `step`, and `zero_grad` methods for training
 
 
-```
+```python
 class TrainCB(Callback):
     def predict(self, learn): learn.preds = learn.model(learn.batch[0])
-    def get_loss(self, learn): learn.loss = learn.loss_func(learn.preds, learn.batch[1])
+    def get_loss(self, learn): 
+        learn.loss = learn.loss_func(learn.preds, learn.batch[1])
     def backward(self, learn): learn.loss.backward()
     def step(self, learn): learn.opt.step()
     def zero_grad(self, learn): learn.opt.zero_grad()
@@ -559,7 +508,7 @@ class TrainCB(Callback):
 Now we can pass this callback to our `Learner` class, not `TrainLearner`, to start training.
 
 
-```
+```python
 cbs = [TrainCB(), metrics, DeviceCB()]
 learner = Learner(get_model(), dls, loss_func=loss_func, cbs=cbs)
 learner.fit(2)
@@ -582,13 +531,14 @@ Lets introduce more ideas using callbacks
 Next, we will write a callback for [gradient clipping](https://stackoverflow.com/a/56069467). Just like all above callbacks, it would not be more than a single line of code
 
 
-```
+```python
 class GradientClippingCB(Callback):
     def __init__(self, max_norm=1.0, norm_type=2): 
         self.max_norm, self.norm_type = max_norm, norm_type
         
     def after_backward(self, learner):
-        torch.nn.utils.clip_grad_norm_(learner.model.parameters(), self.max_norm, self.norm_type)
+        torch.nn.utils.clip_grad_norm_(learner.model.parameters(), 
+                                        self.max_norm, self.norm_type)
 ```
 
 Ever heard about Gradient Accumulation? This technique allows you to train models with large batch size even when your GPU can hold only a few samples before it runs out of memory.
@@ -597,7 +547,7 @@ You can read more about it in [this blog](https://medium.com/huggingface/trainin
 > Accumulating gradients just means that, before calling `optimizer.step()` to perform a step of gradient descent, we will sum the gradients of several backward operations in the `parameter.grad` tensors. This is straightforward to do in PyTorch as the gradient tensors are not reset unless we call `model.zero_grad()` or `optimizer.zero_grad()`. We’ll also need to divide by the number of accumulation steps if our loss is averaged over the training samples.
 
 
-```
+```python
 class GradientAccumulationCB(Callback):
     def __init__(self, n): 
         self.counter = 0
@@ -619,7 +569,7 @@ But there is one shuttle problem with this callback. What if you have 19 batches
 How do you fix this? Simple, call `self.step()` and `self.zero_grad()` after each training epoch. Here is the updated code
 
 
-```
+```python
 class GradientAccumulationCB(Callback):
     def __init__(self, n): 
         self.counter = 0
@@ -642,8 +592,9 @@ class GradientAccumulationCB(Callback):
 Lets train our model with both gradient clipping and accumulation.
 
 
-```
-cbs = [metrics, ChannelLastCB(), DeviceCB(), GradientClippingCB(), GradientAccumulationCB(2)]
+```python
+cbs = [metrics, ChannelLastCB(), DeviceCB(), 
+        GradientClippingCB(), GradientAccumulationCB(2)]
 learner = MomentumLearner(get_model(), dls, cbs=cbs, loss_func=loss_func)
 learner.fit(2)
 ```
@@ -661,22 +612,24 @@ it would be exciting to see if we can train the model with a large learning rate
 Lets implement mixed precision training. For details, refer [this pytorch tutorial](https://pytorch.org/tutorials/recipes/recipes/amp_recipe.html)
 
 
-```
+```python
 class MixedTrainingCB(Callback):
-    def before_fit(self, learn): self.scaler = torch.cuda.amp.GradScaler()
+    def before_fit(self, learn): 
+        self.scaler = torch.cuda.amp.GradScaler()
     def before_batch(self, learn):
         self.autocast = torch.autocast('cuda', dtype=torch.float16)
         self.autocast.__enter__()
     def after_loss(self, learn):
         self.autocast.__exit__(None, None, None)
-    def backward(self, learn): self.scaler.scale(learn.loss).backward()
+    def backward(self, learn): 
+        self.scaler.scale(learn.loss).backward()
     def step(self, learn): 
         self.scaler.step(learn.opt)
         self.scaler.update()
 ```
 
 
-```
+```python
 cbs = [metrics, DeviceCB(), MixedTrainingCB()]
 learner = MomentumLearner(get_model(), dls, cbs=cbs, loss_func=loss_func)
 learner.fit(2)
@@ -688,23 +641,18 @@ learner.fit(2)
     {'accuracy': '0.813', 'loss': '0.534', 'epoch': 1, 'train': 'eval'}
 
 
-There's an even easier way to implement mixed precision training using the `accelerate` python package. Its pretty simple to integrate 
+There's an even easier way to implement mixed precision training using the `accelerate` python package. Its pretty simple to integrate but first, we will have to install it.
 
 
+```bash
+pip install -q accelerate
 ```
-!pip install -q accelerate
-```
 
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m191.5/191.5 KB[0m [31m16.3 MB/s[0m eta [36m0:00:00[0m
-    [?25h
+Now that we have the `accelerate` installed, lets integrate it.
 
-
-```
+```python
 from accelerate import Accelerator
-```
 
-
-```
 class AccelerateCB(TrainCB):
     def __init__(self, mixed_precision="fp16"):
         super().__init__()
@@ -720,7 +668,7 @@ class AccelerateCB(TrainCB):
 Note that we are inheriting from `TrainCB` instead of `Callback` because we are updating the `backward` method. Hence, we will be using `Learner` and not `TrainLearner` or `MomentumLearner` class for training.
 
 
-```
+```python
 cbs = [metrics, DeviceCB(), AccelerateCB()]
 learner = Learner(get_model(), dls, cbs=cbs, loss_func=loss_func)
 learner.fit(2)
@@ -739,13 +687,10 @@ You might have already realized the power of this callback feature. The most imp
 Lets build the iconic `lr_find()`. The idea is to train the model with growing learning rates until the current loss becomes greater than some multiple of minimum loss. Here, we will use 3 as the multiple. Then plots the losses vs the learning rates with a log scale.
 
 
-```
+```python
 import math
 import matplotlib.pyplot as plt
-```
 
-
-```
 class LRFinderCB(Callback):
     def __init__(self, lr_mult=1.3): 
         self.lr_mult = lr_mult
@@ -759,14 +704,16 @@ class LRFinderCB(Callback):
         self.losses.append(loss)
         if loss < self.min: self.min = loss
         if loss > self.min*3: raise CancelFitException()
-        for g in learn.opt.param_groups: g['lr'] *= self.lr_mult
+        for g in learn.opt.param_groups: 
+            g['lr'] *= self.lr_mult
 ```
 
 
-```
+```python
 lrfind = LRFinderCB()
 cbs = [DeviceCB(), lrfind]
-learn = MomentumLearner(get_model(), dls, lr=1e-4, cbs=cbs, loss_func=loss_func)
+learn = MomentumLearner(get_model(), dls, lr=1e-4, 
+                        cbs=cbs, loss_func=loss_func)
 learn.fit(1)
 plt.plot(lrfind.lrs, lrfind.losses)
 plt.xscale('log')
@@ -783,7 +730,7 @@ Doing this every time, is quite a tedious job. So, lets create a learner method.
 The amazing thing is that you can pass callbacks to our `fit()` method as well. The fit method will automatically remove the callback after training is complete.
 
 
-```
+```python
 @fc.patch
 def lr_find(self:Learner, lr_mult=1.3, start_lr=1e-5, max_epochs=10):
     lrfind = LRFinderCB(lr_mult=lr_mult)
@@ -793,7 +740,7 @@ def lr_find(self:Learner, lr_mult=1.3, start_lr=1e-5, max_epochs=10):
 ```
 
 
-```
+```python
 learner = MomentumLearner(get_model(), dls, F.cross_entropy, cbs=cbs)
 learner.lr_find()
 ```
@@ -819,7 +766,7 @@ Here are examples to substantiate the idea. For example, you want to use `Single
 Here is an example, first we will execute `SingleEpochCB`
 
 
-```
+```python
 cbs = [SingleEpochCB(), metrics, DeviceCB()] # important
 learner = MomentumLearner(get_model(), dls, loss_func=loss_func, cbs=cbs)
 learner.fit(3)
@@ -832,7 +779,7 @@ learner.fit(3)
 Here, only training metrics are logged because in validation loop `SingleEpochCB` callback is executed first that terminates the training. Next, we will change the order of callbacks
 
 
-```
+```python
 cbs = [metrics, SingleEpochCB(), DeviceCB()] # update
 learner = MomentumLearner(get_model(), dls, loss_func=loss_func, cbs=cbs)
 learner.fit(3)
@@ -850,7 +797,7 @@ If you might have noticed, the `Callback` class has an attribute called `order`.
 Lets update our `SingleEpochCB` so that its executed last everytime.
 
 
-```
+```python
 class SingleEpochCB(Callback):
     order = Callback.order + 1  # update
     def after_epoch(self, learner): 
@@ -862,7 +809,7 @@ class SingleEpochCB(Callback):
 After this single line of change, no matter the order of `SingleEpochCB` in the list, it will always be executed after `MetricsCB`.
 
 
-```
+```python
 cbs = [SingleEpochCB(), metrics, DeviceCB()] # important
 learner = MomentumLearner(get_model(), dls, loss_func=loss_func, cbs=cbs)
 learner.fit(3)
