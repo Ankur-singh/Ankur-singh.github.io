@@ -56,58 +56,59 @@ We start by sorting our callbacks based on `order` (hence, the `Callback` class 
 
 
 ```python
-class _CbCtxInner:
-    """
-    Builds a context dynamically
-    """
-    def __init__(self, outer, nm): self.outer,self.nm = outer,nm
-    def __enter__(self): self.outer.callback(f'before_{self.nm}')
-    def __exit__ (self, exc_type, exc_val, traceback):
-        chk_exc = globals()[f'Cancel{self.nm.title()}Exception']
-        try:
-            if not exc_type: self.outer.callback(f'after_{self.nm}')
-            return exc_type==chk_exc
-        except chk_exc: pass
-        finally: self.outer.callback(f'cleanup_{self.nm}')
+class with_cbs:
+    def __init__(self, nm): self.nm = nm
+    def __call__(self, f):
+        def _f(o, *args, **kwargs):
+            try:
+                o.callback(f'before_{self.nm}')
+                f(o, *args, **kwargs)
+                o.callback(f'after_{self.nm}')
+            except globals()[f'Cancel{self.nm.title()}Exception']: pass
+            finally: o.callback(f'cleanup_{self.nm}')
+        return _f
 ```
 
-The `_CbCtxInner` class is a super compact way of defining a context that does the following:
-- Dynamically builds a context object
-- Runs `before_<context_name>` method (of all callbacks) when you enter the context.
-- When you exit the context
-    - Runs `after_<context_name>` method (of all callbacks)
-    - Handles `Cancel<Context_name>Exception`
-    - Runs `cleanup_<context_name>` methods in the finally block.
+The `with_cbs` class is a super compact way of defining a decorator that returns a new function wrapping `learn.callback("before_<context_name>")` and `learn.callback("after_<context_name>)` calls around the main function. Furthermore, its put in a *try-except-finally* block that handles `Cancel<Context_name>Exception` and runs `cleanup_<context_name>` methods in the finally block.
 
 
 ```python
 # Main training loop
+
 class Learner():
-    def __init__(self, model, dls=(0,), loss_func=F.mse_loss,
-                    lr=0.1, cbs=None, opt_func=optim.SGD):
+    def __init__(self, model, dls=(0,), loss_func=F.mse_loss, lr=0.1, cbs=None, opt_func=optim.SGD):
         cbs = fc.L(cbs)
         fc.store_attr()
 
-    def cb_ctx(self, nm): return _CbCtxInner(self, nm)
-                
-    def one_epoch(self, train):
-        self.model.train(train)
-        self.dl = self.dls.train if train else self.dls.valid
-        with self.cb_ctx('epoch'):
-            for self.iter,self.batch in enumerate(self.dl):
-                with self.cb_ctx('batch'):
-                    self.predict()
-                    self.callback('after_predict')
-                    self.get_loss()
-                    self.callback('after_loss')
-                    if self.training:
-                        self.backward()
-                        self.callback('after_backward')
-                        self.step()
-                        self.callback('after_step')
-                        self.zero_grad()
-    
-    def fit(self,n_epochs=1,train=True,valid=True,cbs=None,lr=None):
+    @with_cbs('batch')
+    def _one_batch(self):
+        self.predict()
+        self.callback('after_predict')
+        self.get_loss()
+        self.callback('after_loss')
+        if self.training:
+            self.backward()
+            self.callback('after_backward')
+            self.step()
+            self.callback('after_step')
+            self.zero_grad()
+
+    @with_cbs('epoch')
+    def _one_epoch(self):
+        for self.iter,self.batch in enumerate(self.dl): self._one_batch()
+
+    def one_epoch(self, training):
+        self.model.train(training)
+        self.dl = self.dls.train if training else self.dls.valid
+        self._one_epoch()
+
+    @with_cbs('fit')
+    def _fit(self, train, valid):
+        for self.epoch in self.epochs:
+            if train: self.one_epoch(True)
+            if valid: torch.no_grad()(self.one_epoch)(False)
+
+    def fit(self, n_epochs=1, train=True, valid=True, cbs=None, lr=None):
         cbs = fc.L(cbs)
         # `add_cb` and `rm_cb` were added in lesson 18
         for cb in cbs: self.cbs.append(cb)
@@ -115,18 +116,13 @@ class Learner():
             self.n_epochs = n_epochs
             self.epochs = range(n_epochs)
             if lr is None: lr = self.lr
-            if self.opt_func: 
-                self.opt = self.opt_func(self.model.parameters(), lr)
-            with self.cb_ctx('fit'):
-                for self.epoch in self.epochs:
-                    if train: self.one_epoch(True)
-                    if valid: torch.no_grad()(self.one_epoch)(False)
+            if self.opt_func: self.opt = self.opt_func(self.model.parameters(), lr)
+            self._fit(train, valid)
         finally:
             for cb in cbs: self.cbs.remove(cb)
 
     def __getattr__(self, name):
-        if name in ('predict','get_loss','backward','step','zero_grad'): 
-            return partial(self.callback, name)
+        if name in ('predict','get_loss','backward','step','zero_grad'): return partial(self.callback, name)
         raise AttributeError(name)
 
     def callback(self, method_nm): run_cbs(self.cbs, method_nm, self)
