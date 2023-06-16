@@ -1,25 +1,24 @@
-- name: Python
-  desc: OOPs, Packaging, Design Patterns, Pytest
-  percentage: 90
-  color: warning
-
-- name: Data Science
-  desc: Pandas, Numpy, Matplotlib, SQL, BigQuery
+- name: DS / ML / DL
+  desc: Pandas, SQL, BigQuery, Sklearn, Pytorch, Fastai
   percentage: 85
   color: success
 
-- name: Machine Learning
-  desc: Sklearn, LightGBM, CatBoost
+- name: NLP & CV
+  desc: HF Transformers, Object Detection, Segmentaion, OCR
   percentage: 90
   color: danger
 
-- name: Deep Learning
-  desc: Pytorch, Keras, Fastai
-  percentage: 80
-  color: 
+- name: MLOps
+  desc: Distributed Training, Accelerate, Kubeflow, ONNX, OpenVINO, TorchServe
+  percentage: 85
+  color: primary
 
-- name: Computer Vision
-  desc: OpenCV, Object Detection, Segmentaion, OCR
-  percentage: 90
+- name: Research & LLMs
+  desc: Federated Learning, YOLOv5, OpenAI, LangChain
+  percentage: 85
   color: info
 
+- name: Kaggle Competition
+  desc: 3x Bronze Medals, Competitions & Notebooks Expert
+  percentage: 85
+  color: warning

@@ -9,7 +9,9 @@ weight: 3
 
 Hi I am **{{ site.author.name }}**,
 
-Currently, I am pursuing my Masters at San Jose State University. I am also working as a Student Research Assistant under Prof. KaiKai Liu. Some of the technologies that I am working with are Jetson, Docker, YOLOv7, Triton Inference Server, ROS2, Camera sensors, etc.
+I am currently pursuing my Masters at San Jose State University while also working as a Student Research Assistant. My research primarily revolves around Federated Learning, where I conduct thorough examinations of research papers and implement innovative strategies. Specifically, my focus lies in enhancing Knowledge Distillation performance and applying Federated Learning techniques to regression problems.
+
+In addition, I have prior experience in deploying detection and segmentation models on edge devices. This involved working with a range of technologies such as Jetson, Docker, YOLOv8, Triton Inference Server, ROS2, and camera sensors. Through these experiences, I have gained proficiency in optimizing models for edge computing environments.
 
 Before coming to US, I have was working as a Team Lead (ML) at [Zoop.One](https://zoop.one/){:target="_blank"}. I helped develop various ML services like OCR Service, Document Scanner, Liveliness Service, etc. In the process of building these services, I build a phenomenal team of passionate ML Engineers. During my stint, I also improved the state of MLOps at Zoop.one by setting up best pactices, standarizing process, developing frameworks/tools for data collection, training, evaluation, and model deployment. It was quite a learning experience.  
 
@@ -23,7 +25,7 @@ I spend most of my waking hours developing ML projects, reading & implementing r
 - Got featured in Spartan Daily (SJSU newspaper) - [Link](https://issuu.com/spartandaily/docs/sd101922all_rev01_1_){:target="_blank"}
 - "AI for Social Good" Grand Prize winner, at Intel Innovation 2022 - [Link](https://www.linkedin.com/posts/intel-software_intelon-developer-coding-activity-6980704410574233600-dnkh/){:target="_blank"}
 - Kaggle Competitions Expert - [Link](https://www.kaggle.com/ankursingh12){:target="_blank"}
-- Author "Colab-everything" python package, more than 24K downloads - [Link](https://pypi.org/project/colab-everything/){:target="_blank"}
+- Author "Colab-everything" python package, more than 30K downloads - [Link](https://pypi.org/project/colab-everything/){:target="_blank"}
 
 
 <div class="row">
