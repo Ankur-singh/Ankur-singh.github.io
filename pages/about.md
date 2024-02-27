@@ -9,15 +9,11 @@ weight: 3
 
 Hi I am **{{ site.author.name }}**,
 
-I am currently pursuing my Masters at San Jose State University while also working as a Student Research Assistant. My research primarily revolves around Federated Learning, where I conduct thorough examinations of research papers and implement innovative strategies. Specifically, my focus lies in enhancing Knowledge Distillation performance and applying Federated Learning techniques to regression problems.
+Currently pursuing a Master's in Software Engineering at SJSU, expecting to graduate in May 2024. Concurrently, I work part-time at Intel as an AI Solutions Engineer. Prior to joining Intel in May 2023, I spent a year as a research assistant under Dr. Wu and Dr. Liu at SJSU Research Foundation, focusing on Federated Learning, Traffic Flow Prediction, and edge deployment.
 
-In addition, I have prior experience in deploying detection and segmentation models on edge devices. This involved working with a range of technologies such as Jetson, Docker, YOLOv8, Triton Inference Server, ROS2, and camera sensors. Through these experiences, I have gained proficiency in optimizing models for edge computing environments.
+With 4 years of prior professional experience in AI/ML, Software Engineering, DevOps, Cloud, and Databases, I embarked on my journey by founding [AI Adventures](https://www.aiadventures.in/){:target="_blank"}, a startup providing AI/ML solutions. Later, as an ML Team Lead at [Zoop.One](https://zoop.one/){:target="_blank"}, I orchestrated the successful launch of four ML services, housing 20+ deep learning models, handling over 2M+ requests/month. All this in just ten months. My approach, grounded in first principles, emphasized improving developer experience through process building, establishing best practices, and setting up efficient ML infrastructure, leading to rapid prototyping and significantly reduced Time To Market (TTM). I'm really proud of my work at Zoop.
 
-Before coming to US, I have was working as a Team Lead (ML) at [Zoop.One](https://zoop.one/){:target="_blank"}. I helped develop various ML services like OCR Service, Document Scanner, Liveliness Service, etc. In the process of building these services, I build a phenomenal team of passionate ML Engineers. During my stint, I also improved the state of MLOps at Zoop.one by setting up best pactices, standarizing process, developing frameworks/tools for data collection, training, evaluation, and model deployment. It was quite a learning experience.  
-
-Before joining Zoop.One, I founded of a Machine Learning start-up, [Ai Adventures](https://www.aiadventures.in/){:target="_blank"}. At Ai Adventures, we provided AI/ML solutions to businesses. Furthermore, we provided Data Science training to students and professional. With our top-down teaching methodology, we not only helped several people to get started with Data Science but also do good in it professionally.
-
-I spend most of my waking hours developing ML projects, reading & implementing research papers, contributing to open-source projects and participating in Kaggle Data Science competitions (by the time you reading it, I might have become a Kaggle Competition Master). At other times you will find me reading books (mostly biographies).
+Beyond my professional endeavors, I am an avid reader and actively participate in competitions, winning multiple Kaggle competitions and hackathons. I've contributed to several open-source projects and created two Python packages: colab-everything and torchserve-python, aiming to give back to the community. I aspire to give a talk at a Python Conference someday.
 
 ## Acheivements
 
@@ -25,7 +21,7 @@ I spend most of my waking hours developing ML projects, reading & implementing r
 - Got featured in Spartan Daily (SJSU newspaper) - [Link](https://issuu.com/spartandaily/docs/sd101922all_rev01_1_){:target="_blank"}
 - "AI for Social Good" Grand Prize winner, at Intel Innovation 2022 - [Link](https://www.linkedin.com/posts/intel-software_intelon-developer-coding-activity-6980704410574233600-dnkh/){:target="_blank"}
 - Kaggle Competitions Expert - [Link](https://www.kaggle.com/ankursingh12){:target="_blank"}
-- Author "Colab-everything" python package, more than 30K downloads - [Link](https://pypi.org/project/colab-everything/){:target="_blank"}
+- Author "Colab-everything" python package, more than 36K downloads - [Link](https://pypi.org/project/colab-everything/){:target="_blank"}
 
 
 <div class="row">

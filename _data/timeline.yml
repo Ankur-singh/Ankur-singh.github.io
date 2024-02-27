@@ -1,39 +1,19 @@
 - title: AI Solutions Intern, Intel
   from: May, 2023
   to: present
-  description: Training, Optimizing, and Benchmarking Large Language Models (LLMs) on Intel hardware.
+  description: Implemented code samples with advanced techniques like QLoRA, RAG, and INT4/8 inference, and developed end-to-end workflows for distributed training and fine-tuning LLMs on Intel hardware. Additionally, I helped maintain AI code samples in the oneAPI Samples repository, showcasing optimization of AI workloads on Intel hardware using Intel's oneAPI toolkits.
 
 - title: Graduate Research Assistant, SJSU
   from: September, 2022
   to: May, 2023
-  description: Building an Edge AI platfrom to deploy ML/DL models on Edge devices, at scale.
+  description: Managed deployment of detection and segmentation models on edge devices, optimizing models, and benchmarking on various runtimes. Additionally, helped develop innovative strategies for Knowledge Distillation and Federated Learning, with a focus on regression problems.
 
-- title: Student, San Jose State University (SJSU)
-  from: August, 2022
-  to: present
-  description: Masters in Software Engineering
-
-- title: Senior ML Engineer, Zoop.One, Pune
+- title: Machine Learning (ML) Lead, Zoop.One, Pune
   from: September, 2021
   to: July, 2022
-  description: Machine Learning team lead.
+  description: Led the development of key ML services, enhancing functionality and performance. Oversaw the team's strategic leadership, launching four ML services in ten months, emphasizing agile and high-performing practices. 
 
-- title: Co-founder / CTO, Ai Adventures, Pune
+- title: Co-founder / CEO, AI Adventures, Pune
   from: August, 2018
   to: September, 2021
-  description: Project Manager, Lead Developer.
-
-- title: Summer Intern, Credit Suisse, Pune
-  from: May, 2017
-  to: July, 2017
-  description: Front-End Developer (Python & Flask).
-
-- title: Web-Team Head, COEP
-  from: 2017
-  to: 2018
-  description: Development & Management of all the website hosted on college website.
-
-- title: Student, College of Engineer, Pune (COEP)
-  from: 2014
-  to: 2018
-  description: BTech Information Technology.
+  description: Led client project development, overseeing the entire lifecycle and collaborating closely with clients. Created five comprehensive courses covering Python, DS, ML, CV, and DL. Established AI clubs in Pune colleges, fostering a vibrant community through workshops and interactive sessions.
