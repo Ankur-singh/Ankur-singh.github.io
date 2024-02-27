@@ -9,7 +9,7 @@
   color: danger
 
 - name: LLM Stack
-  desc: LangChain, LlamaIndex, Pinecone, Ollama, vLLM, LlamaCPP
+  desc: LangChain, LlamaIndex, Pinecone, vLLM, LlamaCPP
   percentage: 85
   color: warning
 
