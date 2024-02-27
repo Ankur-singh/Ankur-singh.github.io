@@ -1,24 +1,21 @@
-- name: DS / ML / DL
-  desc: Pandas, SQL, BigQuery, Sklearn, Pytorch, Fastai
+- name: Data Science
+  desc: Pandas, SQL, BigQuery, PySpark, Sklearn
   percentage: 85
   color: success
 
-- name: NLP & CV
-  desc: HF Transformers, Object Detection, Segmentaion, OCR
+- name: DL Stack
+  desc: Pytorch, Fastai, Transformers, PEFT, Accelerate, WandB
   percentage: 90
   color: danger
 
+- name: LLM Stack
+  desc: LangChain, LlamaIndex, Pinecone, Ollama, vLLM, LlamaCPP
+  percentage: 85
+  color: warning
+
 - name: MLOps
-  desc: Distributed Training, Accelerate, Kubeflow, ONNX, OpenVINO, TorchServe
+  desc: MLflow, Kubeflow, ONNX, OpenVINO, TorchServe
   percentage: 85
   color: primary
 
-- name: Research & LLMs
-  desc: Federated Learning, YOLOv5, OpenAI, LangChain
-  percentage: 85
-  color: info
 
-- name: Kaggle Competition
-  desc: 3x Bronze Medals, Competitions & Notebooks Expert
-  percentage: 85
-  color: warning
