@@ -3,7 +3,7 @@ comments: true
 title: All about Retrieval in RAG
 tags: [LLMs, RAG, Retrieval, LangChain]
 style: border
-color: secondary
+color: danger
 description: Detailed discussion on various approaches to Retrieval when building RAG systems.
 ---
 
