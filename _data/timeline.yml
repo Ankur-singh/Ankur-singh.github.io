@@ -1,19 +1,19 @@
-- title: AI Solutions Intern, Intel
+- title: AI Solutions Engineer, Intel
   from: May, 2023
-  to: present
-  description: Implemented code samples with advanced techniques like QLoRA, RAG, and INT4/8 inference, and developed end-to-end workflows for distributed training and fine-tuning LLMs on Intel hardware. Additionally, I helped maintain AI code samples in the oneAPI Samples repository, showcasing optimization of AI workloads on Intel hardware using Intel's oneAPI toolkits.
+  to: Present
+  description: Develop, benchmark, profile, and optimize various AI workloads on Intel hardware using Intel's optimization stack. This includes workloads such as distributed training, QLoRA, quantization, custom PyTorch kernels, and LLM deployment. Additionally, responsible for migrating CUDA samples to SYCL and helping maintain over 30 AI code samples.
 
-- title: Graduate Research Assistant, SJSU
+- title: Research Assistant, SJSU Research Foundation
   from: September, 2022
-  to: May, 2023
-  description: Managed deployment of detection and segmentation models on edge devices, optimizing models, and benchmarking on various runtimes. Additionally, helped develop innovative strategies for Knowledge Distillation and Federated Learning, with a focus on regression problems.
+  to: May, 2024
+  description: Optimized the YOLOv8 model for object detection and segmentation to enable real-time inference on NVIDIA Jetson devices connected through ROS. Contributed to developing innovative strategies for Knowledge Distillation and Federated Learning, with a focus on regression problems. Additionally, worked on multi-modal modeling, including image and audio tokenization to prepare these modalities for input to LLMs, and using LLMs to generate image and audio during inference.
 
 - title: Machine Learning (ML) Lead, Zoop.One, Pune
   from: September, 2021
   to: July, 2022
-  description: Led the development of key ML services, enhancing functionality and performance. Oversaw the team's strategic leadership, launching four ML services in ten months, emphasizing agile and high-performing practices. 
+  description: Led the strategic development of machine learning initiatives by launching four core ML services, which include over 20 deep learning models and handle more than 2 million requests per month—all within just ten months. Established best practices for MLOps, developed micro-frameworks, and implemented automation processes, with emphasis on agility and an exceptional developer experience.
 
 - title: Co-founder / CEO, AI Adventures, Pune
   from: August, 2018
   to: September, 2021
-  description: Led client project development, overseeing the entire lifecycle and collaborating closely with clients. Created five comprehensive courses covering Python, DS, ML, CV, and DL. Established AI clubs in Pune colleges, fostering a vibrant community through workshops and interactive sessions.
+  description: Led client project development, overseeing the entire lifecycle and collaborating closely with clients. Created five comprehensive courses covering Python, Data Science, Machine Learning, Computer Vision, and Deep Learning. Established AI clubs in several colleges across the city, fostering a vibrant community through workshops and interactive sessions.

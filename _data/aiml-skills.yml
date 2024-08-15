@@ -4,17 +4,17 @@
   color: success
 
 - name: DL Stack
-  desc: Pytorch, Fastai, Transformers, PEFT, Accelerate, WandB
+  desc: Pytorch, Triton, Transformers, PeFT, Accelerate, CUDA
   percentage: 90
   color: danger
 
 - name: LLM Stack
-  desc: LangChain, LlamaIndex, Pinecone, vLLM, LlamaCPP
+  desc: DeepSpeed, PyTorch Distributed, vLLM, LlamaCPP
   percentage: 85
   color: warning
 
 - name: MLOps
-  desc: MLflow, Kubeflow, ONNX, OpenVINO, TorchServe
+  desc: MLflow, ONNX, OpenVINO, TorchServe, TensorRT
   percentage: 85
   color: primary
 
