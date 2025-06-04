@@ -1,20 +1,20 @@
-- name: Data Science
-  desc: Pandas, SQL, BigQuery, PySpark, Sklearn
+- name: Kernel Development
+  desc: Triton, CUDA, Unsloth, Liger Kernel, torch.compile
   percentage: 85
   color: success
 
-- name: DL Stack
-  desc: Pytorch, Triton, Transformers, PeFT, Accelerate, CUDA
+- name: LLM Training
+  desc: Pytorch, Transformers, Accelerate, Torchtune
   percentage: 90
   color: danger
 
-- name: LLM Stack
-  desc: DeepSpeed, PyTorch Distributed, vLLM, LlamaCPP
+- name: LLM Inference
+  desc: vLLM, SGlang, production-stack, llm-d
   percentage: 85
   color: warning
 
-- name: MLOps
-  desc: MLflow, ONNX, OpenVINO, TorchServe, TensorRT
+- name: LLM Application
+  desc: LiteLLM, Llama-stack, Smolagents, MCP
   percentage: 85
   color: primary
 

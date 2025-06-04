@@ -27,8 +27,8 @@ Beyond my professional endeavors, I am an avid reader and actively participate i
 
 
 <div class="row">
-{% include about/skills.html title="AI/ML Skills" source=site.data.aiml-skills %}
-{% include about/skills.html title="S/W Development Skills" source=site.data.sw-skills %}
+{% include about/skills.html title="GenAI Skills" source=site.data.aiml-skills %}
+{% include about/skills.html title="Software Engineering" source=site.data.sw-skills %}
 </div>
 
 <div class="row">

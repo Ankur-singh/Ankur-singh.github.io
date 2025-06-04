@@ -4,8 +4,7 @@
 ### Site Settings ###
 title               : Ankur Singh
 description         : >-
-                      Juggling machine learning, data science, 
-                      software engineering, databases, and DevOps.
+                      Bridging the gap between LLM research and production.
 
 baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : Ankur-singh/Ankur-singh.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
